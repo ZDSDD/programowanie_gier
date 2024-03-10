@@ -49,12 +49,12 @@ cmake_ninja_workdir = D$:/Gamedevove$ nauki/programowanie_gier/programowanie_gie
 
 build cmake_object_order_depends_target_glad: phony || CMakeFiles/glad.dir
 
-build CMakeFiles/glad.dir/F_/Libs/glad/src/glad.c.obj: C_COMPILER__glad_unscanned_Debug F$:/Libs/glad/src/glad.c || cmake_object_order_depends_target_glad
-  DEP_FILE = CMakeFiles\glad.dir\F_\Libs\glad\src\glad.c.obj.d
+build CMakeFiles/glad.dir/Libs/glad/src/glad.c.obj: C_COMPILER__glad_unscanned_Debug D$:/Gamedevove$ nauki/programowanie_gier/programowanie_gier/Libs/glad/src/glad.c || cmake_object_order_depends_target_glad
+  DEP_FILE = CMakeFiles\glad.dir\Libs\glad\src\glad.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -IF:/Libs/glad/include
+  INCLUDES = -I"D:/Gamedevove nauki/programowanie_gier/programowanie_gier/Libs/glad/include"
   OBJECT_DIR = CMakeFiles\glad.dir
-  OBJECT_FILE_DIR = CMakeFiles\glad.dir\F_\Libs\glad\src
+  OBJECT_FILE_DIR = CMakeFiles\glad.dir\Libs\glad\src
 
 
 # =============================================================================
@@ -64,7 +64,7 @@ build CMakeFiles/glad.dir/F_/Libs/glad/src/glad.c.obj: C_COMPILER__glad_unscanne
 #############################################
 # Link the static library libglad.a
 
-build libglad.a: C_STATIC_LIBRARY_LINKER__glad_Debug CMakeFiles/glad.dir/F_/Libs/glad/src/glad.c.obj
+build libglad.a: C_STATIC_LIBRARY_LINKER__glad_Debug CMakeFiles/glad.dir/Libs/glad/src/glad.c.obj
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = CMakeFiles\glad.dir
   POST_BUILD = cd .
@@ -81,17 +81,17 @@ build libglad.a: C_STATIC_LIBRARY_LINKER__glad_Debug CMakeFiles/glad.dir/F_/Libs
 
 build cmake_object_order_depends_target_projekt1: phony || cmake_object_order_depends_target_glad
 
-build CMakeFiles/projekt1.dir/learnOpenGL/triangle.cpp.obj: CXX_COMPILER__projekt1_unscanned_Debug D$:/Gamedevove$ nauki/programowanie_gier/programowanie_gier/learnOpenGL/triangle.cpp || cmake_object_order_depends_target_projekt1
-  DEP_FILE = CMakeFiles\projekt1.dir\learnOpenGL\triangle.cpp.obj.d
+build CMakeFiles/projekt1.dir/learnOpenGL/triangleWithGradient.cpp.obj: CXX_COMPILER__projekt1_unscanned_Debug D$:/Gamedevove$ nauki/programowanie_gier/programowanie_gier/learnOpenGL/triangleWithGradient.cpp || cmake_object_order_depends_target_projekt1
+  DEP_FILE = CMakeFiles\projekt1.dir\learnOpenGL\triangleWithGradient.cpp.obj.d
   FLAGS = -g -std=gnu++1z -fdiagnostics-color=always
-  INCLUDES = -IF:/Libs/glfw-3.4.bin.WIN64/include -IF:/Libs/glad/include -IF:/Libs/glm-1.0.1-light
+  INCLUDES = -I"D:/Gamedevove nauki/programowanie_gier/programowanie_gier/Libs/glfw-3.4.bin.WIN64/include" -I"D:/Gamedevove nauki/programowanie_gier/programowanie_gier/Libs/glad/include" -I"D:/Gamedevove nauki/programowanie_gier/programowanie_gier/Libs/glm-1.0.1-light"
   OBJECT_DIR = CMakeFiles\projekt1.dir
   OBJECT_FILE_DIR = CMakeFiles\projekt1.dir\learnOpenGL
 
 build CMakeFiles/projekt1.dir/sources/ShaderUtils.cpp.obj: CXX_COMPILER__projekt1_unscanned_Debug D$:/Gamedevove$ nauki/programowanie_gier/programowanie_gier/sources/ShaderUtils.cpp || cmake_object_order_depends_target_projekt1
   DEP_FILE = CMakeFiles\projekt1.dir\sources\ShaderUtils.cpp.obj.d
   FLAGS = -g -std=gnu++1z -fdiagnostics-color=always
-  INCLUDES = -IF:/Libs/glfw-3.4.bin.WIN64/include -IF:/Libs/glad/include -IF:/Libs/glm-1.0.1-light
+  INCLUDES = -I"D:/Gamedevove nauki/programowanie_gier/programowanie_gier/Libs/glfw-3.4.bin.WIN64/include" -I"D:/Gamedevove nauki/programowanie_gier/programowanie_gier/Libs/glad/include" -I"D:/Gamedevove nauki/programowanie_gier/programowanie_gier/Libs/glm-1.0.1-light"
   OBJECT_DIR = CMakeFiles\projekt1.dir
   OBJECT_FILE_DIR = CMakeFiles\projekt1.dir\sources
 
@@ -103,9 +103,9 @@ build CMakeFiles/projekt1.dir/sources/ShaderUtils.cpp.obj: CXX_COMPILER__projekt
 #############################################
 # Link the executable projekt1.exe
 
-build projekt1.exe: CXX_EXECUTABLE_LINKER__projekt1_Debug CMakeFiles/projekt1.dir/learnOpenGL/triangle.cpp.obj CMakeFiles/projekt1.dir/sources/ShaderUtils.cpp.obj | F$:/Libs/glfw-3.4.bin.WIN64/lib-mingw-w64/libglfw3.a libglad.a || libglad.a
+build projekt1.exe: CXX_EXECUTABLE_LINKER__projekt1_Debug CMakeFiles/projekt1.dir/learnOpenGL/triangleWithGradient.cpp.obj CMakeFiles/projekt1.dir/sources/ShaderUtils.cpp.obj | D$:/Gamedevove$ nauki/programowanie_gier/programowanie_gier/Libs/glfw-3.4.bin.WIN64/lib-mingw-w64/libglfw3.a libglad.a || libglad.a
   FLAGS = -g
-  LINK_LIBRARIES = F:/Libs/glfw-3.4.bin.WIN64/lib-mingw-w64/libglfw3.a  libglad.a  -lopengl32  -luser32  -lgdi32  -lshell32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_LIBRARIES = "D:/Gamedevove nauki/programowanie_gier/programowanie_gier/Libs/glfw-3.4.bin.WIN64/lib-mingw-w64/libglfw3.a"  libglad.a  -lopengl32  -luser32  -lgdi32  -lshell32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\projekt1.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
