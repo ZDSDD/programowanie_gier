@@ -81,19 +81,19 @@ build libglad.a: C_STATIC_LIBRARY_LINKER__glad_Debug CMakeFiles/glad.dir/F_/Libs
 
 build cmake_object_order_depends_target_projekt1: phony || cmake_object_order_depends_target_glad
 
-build CMakeFiles/projekt1.dir/rotating.cpp.obj: CXX_COMPILER__projekt1_unscanned_Debug D$:/Gamedevove$ nauki/programowanie_gier/programowanie_gier/rotating.cpp || cmake_object_order_depends_target_projekt1
-  DEP_FILE = CMakeFiles\projekt1.dir\rotating.cpp.obj.d
+build CMakeFiles/projekt1.dir/sources/triangle.cpp.obj: CXX_COMPILER__projekt1_unscanned_Debug D$:/Gamedevove$ nauki/programowanie_gier/programowanie_gier/sources/triangle.cpp || cmake_object_order_depends_target_projekt1
+  DEP_FILE = CMakeFiles\projekt1.dir\sources\triangle.cpp.obj.d
   FLAGS = -g -std=gnu++1z -fdiagnostics-color=always
   INCLUDES = -IF:/Libs/glfw-3.4.bin.WIN64/include -IF:/Libs/glad/include -IF:/Libs/glm-1.0.1-light
   OBJECT_DIR = CMakeFiles\projekt1.dir
-  OBJECT_FILE_DIR = CMakeFiles\projekt1.dir
+  OBJECT_FILE_DIR = CMakeFiles\projekt1.dir\sources
 
-build CMakeFiles/projekt1.dir/ShaderUtils.cpp.obj: CXX_COMPILER__projekt1_unscanned_Debug D$:/Gamedevove$ nauki/programowanie_gier/programowanie_gier/ShaderUtils.cpp || cmake_object_order_depends_target_projekt1
-  DEP_FILE = CMakeFiles\projekt1.dir\ShaderUtils.cpp.obj.d
+build CMakeFiles/projekt1.dir/sources/ShaderUtils.cpp.obj: CXX_COMPILER__projekt1_unscanned_Debug D$:/Gamedevove$ nauki/programowanie_gier/programowanie_gier/sources/ShaderUtils.cpp || cmake_object_order_depends_target_projekt1
+  DEP_FILE = CMakeFiles\projekt1.dir\sources\ShaderUtils.cpp.obj.d
   FLAGS = -g -std=gnu++1z -fdiagnostics-color=always
   INCLUDES = -IF:/Libs/glfw-3.4.bin.WIN64/include -IF:/Libs/glad/include -IF:/Libs/glm-1.0.1-light
   OBJECT_DIR = CMakeFiles\projekt1.dir
-  OBJECT_FILE_DIR = CMakeFiles\projekt1.dir
+  OBJECT_FILE_DIR = CMakeFiles\projekt1.dir\sources
 
 
 # =============================================================================
@@ -103,7 +103,7 @@ build CMakeFiles/projekt1.dir/ShaderUtils.cpp.obj: CXX_COMPILER__projekt1_unscan
 #############################################
 # Link the executable projekt1.exe
 
-build projekt1.exe: CXX_EXECUTABLE_LINKER__projekt1_Debug CMakeFiles/projekt1.dir/rotating.cpp.obj CMakeFiles/projekt1.dir/ShaderUtils.cpp.obj | F$:/Libs/glfw-3.4.bin.WIN64/lib-mingw-w64/libglfw3.a libglad.a || libglad.a
+build projekt1.exe: CXX_EXECUTABLE_LINKER__projekt1_Debug CMakeFiles/projekt1.dir/sources/triangle.cpp.obj CMakeFiles/projekt1.dir/sources/ShaderUtils.cpp.obj | F$:/Libs/glfw-3.4.bin.WIN64/lib-mingw-w64/libglfw3.a libglad.a || libglad.a
   FLAGS = -g
   LINK_LIBRARIES = F:/Libs/glfw-3.4.bin.WIN64/lib-mingw-w64/libglfw3.a  libglad.a  -lopengl32  -luser32  -lgdi32  -lshell32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\projekt1.dir

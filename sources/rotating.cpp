@@ -7,7 +7,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/transform.hpp>
-#include "ShaderUtils.hpp"
+#include "../headers/ShaderUtils.hpp"
 #include <string>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -18,11 +18,11 @@ const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
 //shaders
-const std::string vertexShader = readShaderSourceFromFile(R"(D:\Gamedevove nauki\programowanie_gier\programowanie_gier\shaders\vertexShaderSource.vertexshader)");
+const std::string vertexShader = readShaderSourceFromFile(R"(shaders/vertexShaderSource.vertexshader)");
 
 const GLchar* vertexShaderSource = vertexShader.c_str();
 
-const std::string fragmentShader = readShaderSourceFromFile(R"(D:\Gamedevove nauki\programowanie_gier\programowanie_gier\shaders\fragmentShaderSource.fragmentshader)");
+const std::string fragmentShader = readShaderSourceFromFile(R"(shaders/fragmentShaderSource.fragmentshader)");
 const char* fragmentShaderSource = fragmentShader.c_str();
 
 int main() {
