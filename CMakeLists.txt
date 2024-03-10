@@ -20,7 +20,9 @@ add_library(glad ${GLAD_SOURCE_DIR}/glad.c)
 target_include_directories(glad PUBLIC ${GLAD_INCLUDE_DIR})
 
 # Add executable and link libraries
-add_executable(projekt1 learnOpenGL/triangleWithGradient.cpp sources/ShaderUtils.cpp headers/ShaderUtils.hpp)
+add_executable(projekt1 learnOpenGL/triangleWithGradient.cpp sources/ShaderUtils.cpp headers/ShaderUtils.hpp
+        sources/Shader_s.cpp
+        headers/Shader_s.h)
 target_include_directories(projekt1 PUBLIC
         ${GLFW_INCLUDE_DIR}
         ${GLAD_INCLUDE_DIR}
