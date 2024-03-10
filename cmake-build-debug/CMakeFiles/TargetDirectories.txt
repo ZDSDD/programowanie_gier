@@ -1,0 +1,4 @@
+D:/Gamedevove nauki/programowanie_gier/programowanie_gier/cmake-build-debug/CMakeFiles/glad.dir
+D:/Gamedevove nauki/programowanie_gier/programowanie_gier/cmake-build-debug/CMakeFiles/projekt1.dir
+D:/Gamedevove nauki/programowanie_gier/programowanie_gier/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Gamedevove nauki/programowanie_gier/programowanie_gier/cmake-build-debug/CMakeFiles/rebuild_cache.dir
