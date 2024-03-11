@@ -1,4 +1,13 @@
-"C:\Users\User\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Users/User/AppData/Local/Programs/CLion Nova/bin/ninja/win/x64/ninja.exe" -G Ninja -S "D:\Gamedevove nauki\programowanie_gier\programowanie_gier" -B "D:\Gamedevove nauki\programowanie_gier\programowanie_gier\cmake-build-debug"
--- Configuring done (0.5s)
--- Generating done (0.1s)
--- Build files have been written to: D:/Gamedevove nauki/programowanie_gier/programowanie_gier/cmake-build-debug
+"C:\Users\kamil\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" -S C:\Users\kamil\Desktop\Seba\programowanie_gier -B C:\Users\kamil\Desktop\Seba\programowanie_gier\cmake-build-debug
+CMake Deprecation Warning:
+  Support for "Extra Generators" like
+
+    CodeBlocks
+
+  is deprecated and will be removed from a future version of CMake.  IDEs may
+  use the cmake-file-api(7) to view CMake-generated project build trees.
+
+
+-- Configuring done (0.3s)
+-- Generating done (0.2s)
+-- Build files have been written to: C:/Users/kamil/Desktop/Seba/programowanie_gier/cmake-build-debug
