@@ -21,11 +21,20 @@ const char* vertexShaderSource = R"glsl(
 
 layout (location = 0) in vec3 Pos;
 layout (location = 2) uniform mat4 u_TranslateMatrix;
-layout (location = 3) uniform mat4 u_RotateMatrix;
-layout (location = 4) uniform mat4 u_ProjMatrix;
+layout (location = 3) uniform float u_Rotate;
+layout (location = 4) uniform mat4 u_ScaleMatrix;
+layout (location = 5) uniform mat4 u_ProjMatrix;
+layout (location = 6) uniform mat4 u_RotateMatrix;
+
 void main()
 {
-   gl_Position =u_ProjMatrix * u_TranslateMatrix * u_RotateMatrix * vec4(Pos, 1.0);
+
+   mat4 View =  mat4( cos(u_Rotate), 0.0f, sin(u_Rotate), 0.0f,
+                      	0.0f,          1.0f, 0.0f,          0.0f,
+                     	-sin(u_Rotate), 0.0f, cos(u_Rotate), 0.0f,
+                      	0.0f,          0.0f, -7.0f,         1.0f);
+
+   gl_Position =u_ProjMatrix * View * u_TranslateMatrix * u_RotateMatrix * u_ScaleMatrix * vec4(Pos, 1.0);
 }
 )glsl";
 
@@ -158,30 +167,53 @@ int main() {
         processInput(window);
 
         glClearColor(0.6f, 0.8f, 0.8f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         glUseProgram(shaderProgram);
         glBindVertexArray(VertexArrayId);
 
-        float CurrentTime = glfwGetTime();
-
-        glm::mat4 TranslateMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.5f, -7.0f));
-        glm::mat4 RotateMatrix = glm::rotate(glm::mat4(1.0f), CurrentTime, glm::vec3(1.0f, 1.0f, 0.5f));
+        float currentTime = glfwGetTime();
+        //korpus helikoptera
+        glm::mat4 TranslateMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
+        glm::mat4 RotateMatrix = glm::mat4(1.0f);
+        glm::mat4 ScaleMatrix = glm::scale(glm::mat4(1.0f), glm::vec3(1.5f, 1.0f, 1.0f));
         glm::mat4 ProjMatrix = glm::perspective(glm::radians(45.0f), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.01f,
                                                 100.0f);
 
         glUniformMatrix4fv(2, 1, GL_FALSE, glm::value_ptr(TranslateMatrix));
-        glUniformMatrix4fv(3, 1, GL_FALSE, glm::value_ptr(RotateMatrix));
-        glUniformMatrix4fv(4, 1, GL_FALSE, glm::value_ptr(ProjMatrix));
+        glUniform1f(3, currentTime / 3);
+        glUniformMatrix4fv(4, 1, GL_FALSE, glm::value_ptr(ScaleMatrix));
+        glUniformMatrix4fv(5, 1, GL_FALSE, glm::value_ptr(ProjMatrix));
+        glUniformMatrix4fv(6, 1, GL_FALSE, glm::value_ptr(RotateMatrix));
 
         glUniform4f(1, 0.0f, 0.0f, 1.0f, 1.0f);
         glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 
-        TranslateMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(2.0f, -1.5f, -7.0f));
+        //Śmigło
+
+        TranslateMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.5f, 0.0f));
+        RotateMatrix = glm::rotate(glm::mat4(1.0f), -3 * currentTime, glm::vec3(0.f, 1.f, 0.f));
+        ScaleMatrix = glm::scale(glm::mat4(1.0f), glm::vec3(2.5f, 0.1f, 0.5f));
+
         glUniformMatrix4fv(2, 1, GL_FALSE, glm::value_ptr(TranslateMatrix));
-        glUniform4f(1, 1.0f, 0.0f, 0.0f, 1.0f);
+        glUniformMatrix4fv(4, 1, GL_FALSE, glm::value_ptr(ScaleMatrix));
+        glUniformMatrix4fv(6, 1, GL_FALSE, glm::value_ptr(RotateMatrix));
+
+        glUniform4f(1, 0.9f, 0.4f, 0.5f, 1.0f);
         glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 
+        //Ogon
+
+        TranslateMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(1.5f, 0.45f, 0.0f));
+        RotateMatrix = glm::mat4(1.0f);
+        ScaleMatrix = glm::scale(glm::mat4(1.0f), glm::vec3(2.0f, 0.1f, 0.5f));
+
+        glUniformMatrix4fv(2, 1, GL_FALSE, glm::value_ptr(TranslateMatrix));
+        glUniformMatrix4fv(4, 1, GL_FALSE, glm::value_ptr(ScaleMatrix));
+        glUniformMatrix4fv(6, 1, GL_FALSE, glm::value_ptr(RotateMatrix));
+
+        glUniform4f(1, 0.9f, 0.0f, 0.0f, 1.0f);
+        glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
         glfwSwapBuffers(window);
         glfwPollEvents();
     }

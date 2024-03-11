@@ -1,23 +1,27 @@
 #include <cmath>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <iostream>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
 void processInput(GLFWwindow* window);
 
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
+const unsigned int SCREEN_WIDTH = 800;
+const unsigned int SCREEN_HEIGHT = 600;
 
 //shaders
 const char* vertexShaderSource = R"glsl(
-#version 460 core
-layout (location = 0) in vec3 aPos;
+#version 430 core
 
+layout (location = 0) in vec3 Pos;
+layout (location = 2) uniform mat4 MVP;
 void main()
 {
-   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
+   gl_Position = MVP * vec4(Pos, 1.0);
 }
 )glsl";
 
@@ -41,7 +45,7 @@ int main() {
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
 
-    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "LearnOpenGL", NULL, NULL);
     if (window == NULL) {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
@@ -138,14 +142,30 @@ int main() {
 
 
         float timeValue = glfwGetTime();
-        float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
+        float greenValue = (std::sin(timeValue) / 2.0f) + 0.5f;
+        float redValue = (std::cos(timeValue) / 2.0f) + 0.5f;
+
         int vertexColorLocation = glGetUniformLocation(shaderProgram, "OurColor");
         glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
 
         glBindVertexArray(VertexArrayId);
 
-        glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, 0);
 
+        glm::mat4 MV = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.5f, -7.0f));
+        MV = glm::rotate(MV, timeValue, glm::vec3(0.0f, 1.0f, 0.0f));
+        glm::mat4 Proj = glm::perspective(glm::radians(45.0f), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.01f,
+                                          100.0f);
+
+        glm::mat4 MVP = Proj * MV;
+        glUniformMatrix4fv(2, 1, GL_FALSE, glm::value_ptr(MVP));
+
+        glUniform4f(1, 0.0f, 0.0f, 1.0f, 1.0f);
+
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
+
+
+        glUniform4f(vertexColorLocation, redValue, 0.f, 0.0f, 1.0f);
+        glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, (void *)(6 * sizeof(unsigned int)));
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
