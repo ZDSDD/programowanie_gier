@@ -20,9 +20,7 @@ add_library(glad ${GLAD_SOURCE_DIR}/glad.c)
 target_include_directories(glad PUBLIC ${GLAD_INCLUDE_DIR})
 
 # Add executable and link libraries
-add_executable(projekt1 rotacje_i_przesuniecia/billard.cpp sources/ShaderUtils.cpp headers/ShaderUtils.hpp
-        sources/Shader_s.cpp
-        headers/Shader_s.h)
+add_executable(projekt1 rotacje_i_przesuniecia/klawiatura.cpp sources/ShaderUtils.cpp headers/ShaderUtils.hpp headers/Shader_s.h)
 target_include_directories(projekt1 PUBLIC
         ${GLFW_INCLUDE_DIR}
         ${GLAD_INCLUDE_DIR}
@@ -31,4 +29,10 @@ target_include_directories(projekt1 PUBLIC
 target_link_libraries(projekt1 glfw glad opengl32 user32 gdi32 shell32)
 
 # Copy shaders to build directory
-file(COPY shaders DESTINATION "${CMAKE_BINARY_DIR}")
+add_custom_target(copy_resources ALL
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${PROJECT_SOURCE_DIR}/resources
+        ${PROJECT_BINARY_DIR}/resources
+        COMMENT "Copying resources into binary directory")
+
+add_dependencies(projekt1 copy_resources)
