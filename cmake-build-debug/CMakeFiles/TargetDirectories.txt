@@ -1,4 +1,0 @@
-C:/Users/kamil/Desktop/Seba/programowanie_gier/cmake-build-debug/CMakeFiles/glad.dir
-C:/Users/kamil/Desktop/Seba/programowanie_gier/cmake-build-debug/CMakeFiles/projekt1.dir
-C:/Users/kamil/Desktop/Seba/programowanie_gier/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/kamil/Desktop/Seba/programowanie_gier/cmake-build-debug/CMakeFiles/rebuild_cache.dir
