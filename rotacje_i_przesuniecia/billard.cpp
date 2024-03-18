@@ -15,7 +15,7 @@ const unsigned int SCREEN_WIDTH = 1200;
 const unsigned int SCREEN_HEIGHT = 800;
 
 glm::vec2 move(0.0f);
-float rot_angle = 0.0f;
+float rot_angle = 90.0f;
 
 //shaders
 const char* vertexShaderSource = R"glsl(
@@ -43,6 +43,32 @@ void main()
    FragColor = TriangleColor;
 }
 )glsl";
+
+
+float _speed = 0.1f;
+
+void moveCube(float speed) {
+    move.y += speed * sin(rot_angle);
+    move.x += speed * cos(rot_angle);
+}
+
+struct Walls {
+    glm::vec2 left = glm::vec2(-10.f, 0.f);
+    glm::vec2 right = glm::vec2(10.f, 0.f);
+    glm::vec2 up = glm::vec2(0.f, -10.f);
+    glm::vec2 down = glm::vec2(0.f, 10.f);
+} wall;
+
+bool checkCollision() {
+    std::cout << move.x << ", y: "<< move.y << std::endl;
+    if(move.x >= wall.right.x || move.x <= wall.left.x) {
+        return true;
+    }
+    if(move.y <= wall.up.y || move.y >= wall.down.y) {
+        return true;
+    }
+    return false;
+}
 
 int main() {
     glfwInit();
@@ -195,9 +221,10 @@ int main() {
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, (void *)(36 * sizeof(unsigned int)));
 
         //szeœcian
-
-        ModelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(move.x, move.y, 0.f));
-        ModelMatrix = glm::rotate(ModelMatrix, rot_angle, glm::vec3(0.0f, 0.0f, 1.0f));
+        _speed *= checkCollision() ? -1 : 1;
+        moveCube(_speed);
+        ModelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(move.x, 0.f, -move.y));
+        ModelMatrix = glm::rotate(ModelMatrix, rot_angle, glm::vec3(0.0f, 1.0f, 0.0f));
         glUniformMatrix4fv(4, 1, GL_FALSE, glm::value_ptr(ModelMatrix));
 
         glUniform4f(1, 0.0f, 0.0f, 1.0f, 1.0f);
@@ -206,6 +233,7 @@ int main() {
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
+
 
     glDeleteVertexArrays(1, &VertexArrayId);
     glDeleteBuffers(1, &VertexBufferId);
@@ -216,18 +244,14 @@ int main() {
     return 0;
 }
 
-float speed = 0.1f;
-
 void processInput(GLFWwindow* window) {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
     if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) {
-        move.y += speed * sin(rot_angle);
-        move.x += speed * cos(rot_angle);
+        moveCube(_speed);
     }
     if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) {
-        move.y -= speed * sin(rot_angle);
-        move.x -= speed * cos(rot_angle);
+        moveCube(-_speed);
     }
     if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
     }
@@ -238,6 +262,7 @@ void processInput(GLFWwindow* window) {
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         rot_angle += glm::radians(-1.0f);
 }
+
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);
