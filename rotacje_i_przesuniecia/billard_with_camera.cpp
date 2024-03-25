@@ -156,7 +156,11 @@ int main() {
     //game loop
     while (!glfwWindowShouldClose(window)) {
         processInput(window);
-
+        // per-frame time logic
+        // --------------------
+        float currentFrame = static_cast<float>(glfwGetTime());
+        deltaTime = currentFrame - lastFrame;
+        lastFrame = currentFrame;
         glClearColor(0.6f, 0.6f, 0.8f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -177,6 +181,14 @@ int main() {
         // ModelMatrix = glm::rotate(ModelMatrix, -90.f, glm::vec3(0.0f, 1.f,0.f));
         glUniformMatrix4fv(3, 1, GL_FALSE, glm::value_ptr(ViewMatrix));
         glUniformMatrix4fv(4, 1, GL_FALSE, glm::value_ptr(ModelMatrix));
+        // pass projection matrix to shader (note that in this case it could change every frame)
+        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT,
+                                                0.1f, 100.0f);
+        shader.setMat4("u_ProjMatrix", projection);
+
+        // camera/view transformation
+        glm::mat4 view = camera.GetViewMatrix();
+        shader.setMat4("u_ViewMatrix", view);
 
         //pod³oga
 
@@ -206,8 +218,7 @@ int main() {
     return 0;
 }
 
-void processInput(GLFWwindow *window)
-{
+void processInput(GLFWwindow* window) {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
 
@@ -223,8 +234,7 @@ void processInput(GLFWwindow *window)
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
 // ---------------------------------------------------------------------------------------------
-void framebuffer_size_callback(GLFWwindow* window, int width, int height)
-{
+void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
     // make sure the viewport matches the new window dimensions; note that width and
     // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, width, height);
@@ -233,13 +243,11 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 
 // glfw: whenever the mouse moves, this callback is called
 // -------------------------------------------------------
-void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
-{
+void mouse_callback(GLFWwindow* window, double xposIn, double yposIn) {
     float xpos = static_cast<float>(xposIn);
     float ypos = static_cast<float>(yposIn);
 
-    if (firstMouse)
-    {
+    if (firstMouse) {
         lastX = xpos;
         lastY = ypos;
         firstMouse = false;
@@ -256,7 +264,6 @@ void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
 
 // glfw: whenever the mouse scroll wheel scrolls, this callback is called
 // ----------------------------------------------------------------------
-void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
-{
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset) {
     camera.ProcessMouseScroll(static_cast<float>(yoffset));
 }

@@ -20,7 +20,8 @@ add_library(glad ${GLAD_SOURCE_DIR}/glad.c)
 target_include_directories(glad PUBLIC ${GLAD_INCLUDE_DIR})
 
 # Add executable and link libraries
-add_executable(projekt1 rotacje_i_przesuniecia/billard.cpp sources/ShaderUtils.cpp headers/ShaderUtils.hpp headers/Shader_s.h)
+add_executable(projekt1 rotacje_i_przesuniecia/billard_with_camera.cpp sources/ShaderUtils.cpp headers/ShaderUtils.hpp headers/Shader_s.h
+        headers/Camera.h)
 target_include_directories(projekt1 PUBLIC
         ${GLFW_INCLUDE_DIR}
         ${GLAD_INCLUDE_DIR}
