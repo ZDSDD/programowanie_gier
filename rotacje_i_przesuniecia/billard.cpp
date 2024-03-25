@@ -5,6 +5,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "../headers/Shader_s.h"
 #include <iostream>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -17,40 +18,9 @@ const unsigned int SCREEN_HEIGHT = 800;
 glm::vec2 move(0.0f);
 float rot_angle = 90.0f;
 
-//shaders
-const char* vertexShaderSource = R"glsl(
-#version 430 core
+float speedx = 0.1f;
+float speedy = 0.1f;
 
-layout (location = 0) in vec3 Pos;
-layout (location = 2) uniform mat4 u_ProjMatrix;
-layout (location = 3) uniform mat4 u_ViewMatrix;
-layout (location = 4) uniform mat4 u_ModelMatrix;
-
-void main()
-{
-   gl_Position = u_ProjMatrix * u_ViewMatrix * u_ModelMatrix * vec4(Pos, 1.0);
-}
-)glsl";
-
-const char* fragmentShaderSource = R"glsl(
-#version 430 core
-
-layout (location = 1) uniform vec4 TriangleColor;
-
-out vec4 FragColor;
-void main()
-{
-   FragColor = TriangleColor;
-}
-)glsl";
-
-
-float _speed = 0.1f;
-
-void moveCube(float speed) {
-    move.y += speed * sin(rot_angle);
-    move.x += speed * cos(rot_angle);
-}
 
 struct Walls {
     glm::vec2 left = glm::vec2(-10.f, 0.f);
@@ -59,15 +29,20 @@ struct Walls {
     glm::vec2 down = glm::vec2(0.f, 10.f);
 } wall;
 
-bool checkCollision() {
-    std::cout << move.x << ", y: "<< move.y << std::endl;
-    if(move.x >= wall.right.x || move.x <= wall.left.x) {
-        return true;
+void checkCollision() {
+    std::cout << move.x << ", y: " << move.y << std::endl;
+    if (move.x >= wall.right.x || move.x <= wall.left.x) {
+        speedx *= -1;
     }
-    if(move.y <= wall.up.y || move.y >= wall.down.y) {
-        return true;
+    if (move.y <= wall.up.y || move.y >= wall.down.y) {
+        speedy *= -1;
     }
-    return false;
+}
+
+void moveCube() {
+    move.y += speedy * sin(rot_angle);
+    move.x += speedx * cos(rot_angle);
+    checkCollision();
 }
 
 int main() {
@@ -97,42 +72,7 @@ int main() {
     glEnable(GL_DEPTH_TEST);
 
 
-    // build and compile our shader program
-    // vertex shader
-    unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
-    glCompileShader(vertexShader);
-
-    int success;
-    char infoLog[512];
-    glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-    if (!success) {
-        glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-        std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
-    }
-    // fragment shader
-    unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
-    glCompileShader(fragmentShader);
-
-    glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
-    if (!success) {
-        glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-        std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
-    }
-    // link shaders
-    unsigned int shaderProgram = glCreateProgram();
-    glAttachShader(shaderProgram, vertexShader);
-    glAttachShader(shaderProgram, fragmentShader);
-    glLinkProgram(shaderProgram);
-
-    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-    if (!success) {
-        glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-        std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
-    }
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
+    Shader shader("resources/shaders/rotacje/vertex.vs", "resources/shaders/rotacje/fragment.fs");
 
 
     static const float Qube[] = {
@@ -199,7 +139,8 @@ int main() {
         glClearColor(0.6f, 0.6f, 0.8f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        glUseProgram(shaderProgram);
+        shader.use();
+
         glBindVertexArray(VertexArrayId);
 
         //macierz rzutowania
@@ -221,8 +162,7 @@ int main() {
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, (void *)(36 * sizeof(unsigned int)));
 
         //szeœcian
-        _speed *= checkCollision() ? -1 : 1;
-        moveCube(_speed);
+        moveCube();
         ModelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(move.x, 0.f, -move.y));
         ModelMatrix = glm::rotate(ModelMatrix, rot_angle, glm::vec3(0.0f, 1.0f, 0.0f));
         glUniformMatrix4fv(4, 1, GL_FALSE, glm::value_ptr(ModelMatrix));
@@ -238,7 +178,7 @@ int main() {
     glDeleteVertexArrays(1, &VertexArrayId);
     glDeleteBuffers(1, &VertexBufferId);
     glDeleteBuffers(1, &ElementBufferId);
-    glDeleteProgram(shaderProgram);
+    glDeleteProgram(shader.ID);
 
     glfwTerminate();
     return 0;
@@ -248,10 +188,8 @@ void processInput(GLFWwindow* window) {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
     if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) {
-        moveCube(_speed);
     }
     if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) {
-        moveCube(-_speed);
     }
     if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
     }
