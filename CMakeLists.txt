@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.28)
+cmake_minimum_required(VERSION 3.27)
 project(projekt1)
 
 # Define paths to external libraries
@@ -20,7 +20,7 @@ add_library(glad ${GLAD_SOURCE_DIR}/glad.c)
 target_include_directories(glad PUBLIC ${GLAD_INCLUDE_DIR})
 
 # Add executable and link libraries
-add_executable(projekt1 rotacje_i_przesuniecia/billard_with_camera.cpp sources/ShaderUtils.cpp headers/ShaderUtils.hpp headers/Shader_s.h
+add_executable(projekt1 rotacje_i_przesuniecia/grawitacja.cpp sources/ShaderUtils.cpp headers/ShaderUtils.hpp headers/Shader_s.h
         headers/Camera.h)
 target_include_directories(projekt1 PUBLIC
         ${GLFW_INCLUDE_DIR}
