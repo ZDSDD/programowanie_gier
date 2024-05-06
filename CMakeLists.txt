@@ -20,8 +20,10 @@ add_library(glad ${GLAD_SOURCE_DIR}/glad.c)
 target_include_directories(glad PUBLIC ${GLAD_INCLUDE_DIR})
 
 # Add executable and link libraries
-add_executable(projekt1 rotacje_i_przesuniecia/grawitacja.cpp sources/ShaderUtils.cpp headers/ShaderUtils.hpp headers/Shader_s.h
-        headers/Camera.h)
+add_executable(projekt1
+        shaderGeo/geometry2.cpp
+        headers/shader.h)
+
 target_include_directories(projekt1 PUBLIC
         ${GLFW_INCLUDE_DIR}
         ${GLAD_INCLUDE_DIR}
