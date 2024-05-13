@@ -21,8 +21,6 @@ target_include_directories(glad PUBLIC ${GLAD_INCLUDE_DIR})
 
 # Add executable and link libraries
 add_executable(projekt1
-        shaderGeo/geometry2.cpp
-        headers/shader.h
         Game/Game.cpp
         Game/Game.h
         Game/Shader.cpp
@@ -30,7 +28,14 @@ add_executable(projekt1
         Game/Texture2D.cpp
         Game/Texture2D.h
         Game/ResourceManager.cpp
-        Game/ResourceManager.h)
+        Game/ResourceManager.h
+        Game/Main.cpp
+        Game/SpriteRenderer.cpp
+        Game/SpriteRenderer.h
+        Game/GameLevel.cpp
+        Game/GameLevel.h
+        Game/GameObject.cpp
+        Game/GameObject.h)
 
 target_include_directories(projekt1 PUBLIC
         ${GLFW_INCLUDE_DIR}
