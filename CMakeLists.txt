@@ -35,7 +35,10 @@ add_executable(projekt1
         Game/GameLevel.cpp
         Game/GameLevel.h
         Game/GameObject.cpp
-        Game/GameObject.h)
+        Game/GameObject.h
+        Game/BallObject.cpp
+        Game/BallObject.h
+)
 
 target_include_directories(projekt1 PUBLIC
         ${GLFW_INCLUDE_DIR}
