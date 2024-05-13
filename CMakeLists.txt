@@ -28,7 +28,9 @@ add_executable(projekt1
         Game/Shader.cpp
         Game/Shader.h
         Game/Texture2D.cpp
-        Game/Texture2D.h)
+        Game/Texture2D.h
+        Game/ResourceManager.cpp
+        Game/ResourceManager.h)
 
 target_include_directories(projekt1 PUBLIC
         ${GLFW_INCLUDE_DIR}
