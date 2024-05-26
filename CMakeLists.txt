@@ -42,6 +42,7 @@ add_executable(projekt1
         Game/ParticleGenerator.h
         Game/PostProcessor.cpp
         Game/PostProcessor.h
+        Game/PowerUp.h
 )
 
 target_include_directories(projekt1 PUBLIC
