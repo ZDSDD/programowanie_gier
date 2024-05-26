@@ -40,6 +40,8 @@ add_executable(projekt1
         Game/BallObject.h
         Game/ParticleGenerator.cpp
         Game/ParticleGenerator.h
+        Game/PostProcessor.cpp
+        Game/PostProcessor.h
 )
 
 target_include_directories(projekt1 PUBLIC

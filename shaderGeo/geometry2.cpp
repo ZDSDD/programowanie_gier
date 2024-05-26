@@ -159,29 +159,23 @@ int main()
             0.0f,  0.0f, 0.0f,
             1.0f,  0.0f, 0.0f,
             0.0f,  1.0f, 0.0f,
+            1.0f,  1.0f, 0.0f
     };
 
-    unsigned int Indices[] = {
-            0, 1, 2,
-    };
 
-    unsigned int VertexBufferId, VertexArrayId, ElementBufferId;
+    unsigned int VertexBufferId, VertexArrayId;
     glGenVertexArrays(1, &VertexArrayId);
     glGenBuffers(1, &VertexBufferId);
-    glGenBuffers(1, &ElementBufferId);
     glBindVertexArray(VertexArrayId);
 
     glBindBuffer(GL_ARRAY_BUFFER, VertexBufferId);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(My_Points), My_Points, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(My_Points), &My_Points, GL_STATIC_DRAW);
 
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ElementBufferId);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
-
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), static_cast<void *>(nullptr));
     glEnableVertexAttribArray(0);
 
-    //glBindBuffer(GL_ARRAY_BUFFER, 0);
-    //glBindVertexArray(0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindVertexArray(0);
 
     glfwSetTime(0);
     glfwSwapInterval(1);
@@ -200,13 +194,13 @@ int main()
         float CurrentTime = glfwGetTime();
 
         glm::mat4 TranslateMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.5f, -7.0f));
-        glm::mat4 ProjMatrix = glm::perspective(glm::radians(45.0f), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.01f, 100.0f);
+        glm::mat4 ProjMatrix = glm::perspective(glm::radians(45.0f), static_cast<float>(SCREEN_WIDTH) / static_cast<float>(SCREEN_HEIGHT), 0.01f, 100.0f);
 
         glUniformMatrix4fv(2, 1, GL_FALSE, glm::value_ptr(TranslateMatrix));
         glUniformMatrix4fv(3, 1, GL_FALSE, glm::value_ptr(ProjMatrix));
 
         glUniform4f(1, 0.0f, 0.0f, 1.0f, 1.0f);
-        glDrawElements(GL_POINTS, 3, GL_UNSIGNED_INT, 0);
+        glDrawArrays(GL_POINTS, 0, 4);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -214,7 +208,6 @@ int main()
 
     glDeleteVertexArrays(1, &VertexArrayId);
     glDeleteBuffers(1, &VertexBufferId);
-    glDeleteBuffers(1, &ElementBufferId);
     glDeleteProgram(shaderProgram);
 
     glfwTerminate();
