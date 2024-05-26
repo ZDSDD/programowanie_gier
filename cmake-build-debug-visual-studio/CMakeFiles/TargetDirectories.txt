@@ -1,5 +1,0 @@
-C:/Users/User/CLionProjects/programowanie_gier/cmake-build-debug-visual-studio/CMakeFiles/glad.dir
-C:/Users/User/CLionProjects/programowanie_gier/cmake-build-debug-visual-studio/CMakeFiles/projekt1.dir
-C:/Users/User/CLionProjects/programowanie_gier/cmake-build-debug-visual-studio/CMakeFiles/copy_resources.dir
-C:/Users/User/CLionProjects/programowanie_gier/cmake-build-debug-visual-studio/CMakeFiles/edit_cache.dir
-C:/Users/User/CLionProjects/programowanie_gier/cmake-build-debug-visual-studio/CMakeFiles/rebuild_cache.dir

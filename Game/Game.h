@@ -10,6 +10,7 @@
 #include "BallObject.h"
 #include "PowerUp.h"
 
+// Represents the current state of the game
 enum GameState
 {
     GAME_ACTIVE,
@@ -29,8 +30,7 @@ enum Direction
 // Defines a Collision typedef that represents collision data
 typedef std::tuple<bool, Direction, glm::vec2> Collision;
 // <collision?, what direction?, difference vector center - closest point>
-typedef std::tuple<bool, Direction, glm::vec2> Collision;
-// <collision?, what direction?, difference vector center - closest point>
+
 // Initial size of the player paddle
 const glm::vec2 PLAYER_SIZE(100.0f, 20.0f);
 // Initial velocity of the player paddle
@@ -48,10 +48,12 @@ public:
     // game state
     GameState State;
     bool Keys[1024];
+    bool KeysProcessed[1024];
     unsigned int Width, Height;
     std::vector<GameLevel> Levels;
     std::vector<PowerUp> PowerUps;
     unsigned int Level;
+    unsigned int Lives;
     // constructor/destructor
     Game(unsigned int width, unsigned int height);
     ~Game();
