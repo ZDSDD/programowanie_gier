@@ -1,19 +1,34 @@
 cmake_minimum_required(VERSION 3.27)
 project(projekt1)
 
+#Path roots
+set(IRRKLANG_ROOT "${PROJECT_SOURCE_DIR}/Libs/irrKlang-64bit-1.6.0")
+
 # Define paths to external libraries
 set(GLFW_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libs/glfw-3.4.bin.WIN64/include")
-set(GLFW_LIB_DIR "${PROJECT_SOURCE_DIR}/Libs/glfw-3.4.bin.WIN64/lib-mingw-w64")
+set(GLFW_LIB_DIR "${PROJECT_SOURCE_DIR}/Libs/glfw-3.4.bin.WIN64/lib-vc2022")
 set(GLAD_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libs/glad/include")
 set(GLAD_SOURCE_DIR "${PROJECT_SOURCE_DIR}/Libs/glad/src")
 set(GLM_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/Libs/glm-1.0.1-light")
-
+set(IRRKLANG_INCLUDE_DIR "${IRRKLANG_ROOT}/include")
+set(IRRKLANG_LIB_DIR "${IRRKLANG_ROOT}/lib/Winx64-visualStudio")
+set(IRRKLANG_BIN_DIR "${IRRKLANG_ROOT}/bin/Winx64-visualStudio")
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
 
 # Add GLFW library
 add_library(glfw STATIC IMPORTED)
-set_target_properties(glfw PROPERTIES IMPORTED_LOCATION "${GLFW_LIB_DIR}/libglfw3.a")
+set_target_properties(glfw PROPERTIES IMPORTED_LOCATION "${GLFW_LIB_DIR}/glfw3.lib")
+
+# Add IrrKlang library
+include_directories(${IRRKLANG_INCLUDE_DIR})
+set(IRRKLANG_LIBRARY "${IRRKLANG_LIB_DIR}/irrKlang.lib")
+
+if (EXISTS "${IRRKLANG_LIBRARY}")
+    message(STATUS "Found irrKlang library: ${IRRKLANG_LIBRARY}")
+else()
+    message(FATAL_ERROR "irrKlang library not found at ${IRRKLANG_LIBRARY}")
+endif()
 
 # Add GLAD library
 add_library(glad ${GLAD_SOURCE_DIR}/glad.c)
@@ -49,8 +64,9 @@ target_include_directories(projekt1 PUBLIC
         ${GLFW_INCLUDE_DIR}
         ${GLAD_INCLUDE_DIR}
         ${GLM_INCLUDE_DIR}
+        ${IRRKLANG_INCLUDE_DIR}
 )
-target_link_libraries(projekt1 glfw glad opengl32 user32 gdi32 shell32)
+target_link_libraries(projekt1 ${IRRKLANG_LIBRARY} glfw glad opengl32 user32 gdi32 shell32)
 
 # Copy shaders to build directory
 add_custom_target(copy_resources ALL

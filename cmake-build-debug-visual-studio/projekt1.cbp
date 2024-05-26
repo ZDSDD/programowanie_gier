@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="projekt1"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="msvc8"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/User/CLionProjects/programowanie_gier/cmake-build-debug-visual-studio"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 all"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="glad">
+				<Option output="C:/Users/User/CLionProjects/programowanie_gier/cmake-build-debug-visual-studio/glad.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/User/CLionProjects/programowanie_gier/cmake-build-debug-visual-studio"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:/Users/User/CLionProjects/programowanie_gier/Libs/irrKlang-64bit-1.6.0/include"/>
+					<Add directory="C:/Users/User/CLionProjects/programowanie_gier/Libs/glad/include"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\ATLMFC\include"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\VS\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\cppwinrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 glad"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="glad/fast">
+				<Option output="C:/Users/User/CLionProjects/programowanie_gier/cmake-build-debug-visual-studio/glad.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/User/CLionProjects/programowanie_gier/cmake-build-debug-visual-studio"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:/Users/User/CLionProjects/programowanie_gier/Libs/irrKlang-64bit-1.6.0/include"/>
+					<Add directory="C:/Users/User/CLionProjects/programowanie_gier/Libs/glad/include"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\ATLMFC\include"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\VS\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\cppwinrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 glad/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="projekt1">
+				<Option output="C:/Users/User/CLionProjects/programowanie_gier/cmake-build-debug-visual-studio/projekt1.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/User/CLionProjects/programowanie_gier/cmake-build-debug-visual-studio"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:/Users/User/CLionProjects/programowanie_gier/Libs/irrKlang-64bit-1.6.0/include"/>
+					<Add directory="C:/Users/User/CLionProjects/programowanie_gier/Libs/glfw-3.4.bin.WIN64/include"/>
+					<Add directory="C:/Users/User/CLionProjects/programowanie_gier/Libs/glad/include"/>
+					<Add directory="C:/Users/User/CLionProjects/programowanie_gier/Libs/glm-1.0.1-light"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\ATLMFC\include"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\VS\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\cppwinrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 projekt1"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="projekt1/fast">
+				<Option output="C:/Users/User/CLionProjects/programowanie_gier/cmake-build-debug-visual-studio/projekt1.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/User/CLionProjects/programowanie_gier/cmake-build-debug-visual-studio"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="C:/Users/User/CLionProjects/programowanie_gier/Libs/irrKlang-64bit-1.6.0/include"/>
+					<Add directory="C:/Users/User/CLionProjects/programowanie_gier/Libs/glfw-3.4.bin.WIN64/include"/>
+					<Add directory="C:/Users/User/CLionProjects/programowanie_gier/Libs/glad/include"/>
+					<Add directory="C:/Users/User/CLionProjects/programowanie_gier/Libs/glm-1.0.1-light"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\include"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.39.33519\ATLMFC\include"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\VS\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\cppwinrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 projekt1/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="copy_resources">
+				<Option working_dir="C:/Users/User/CLionProjects/programowanie_gier/cmake-build-debug-visual-studio"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 copy_resources"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/User/CLionProjects/programowanie_gier/cmake-build-debug-visual-studio"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 edit_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/User/CLionProjects/programowanie_gier/cmake-build-debug-visual-studio"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\User\CLionProjects\programowanie_gier\cmake-build-debug-visual-studio\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/Game/BallObject.cpp">
+			<Option target="projekt1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/Game/BallObject.h">
+			<Option target="projekt1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/Game/Game.cpp">
+			<Option target="projekt1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/Game/Game.h">
+			<Option target="projekt1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/Game/GameLevel.cpp">
+			<Option target="projekt1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/Game/GameLevel.h">
+			<Option target="projekt1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/Game/GameObject.cpp">
+			<Option target="projekt1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/Game/GameObject.h">
+			<Option target="projekt1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/Game/Main.cpp">
+			<Option target="projekt1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/Game/ParticleGenerator.cpp">
+			<Option target="projekt1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/Game/ParticleGenerator.h">
+			<Option target="projekt1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/Game/PostProcessor.cpp">
+			<Option target="projekt1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/Game/PostProcessor.h">
+			<Option target="projekt1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/Game/PowerUp.h">
+			<Option target="projekt1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/Game/ResourceManager.cpp">
+			<Option target="projekt1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/Game/ResourceManager.h">
+			<Option target="projekt1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/Game/Shader.cpp">
+			<Option target="projekt1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/Game/Shader.h">
+			<Option target="projekt1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/Game/SpriteRenderer.cpp">
+			<Option target="projekt1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/Game/SpriteRenderer.h">
+			<Option target="projekt1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/Game/Texture2D.cpp">
+			<Option target="projekt1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/Game/Texture2D.h">
+			<Option target="projekt1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/Libs/glad/src/glad.c">
+			<Option target="glad"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/programowanie_gier/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
