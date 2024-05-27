@@ -100,7 +100,7 @@ void Game::Init()
     this->Levels.push_back(two);
     this->Levels.push_back(three);
     this->Levels.push_back(four);
-    this->Level = 0;
+    this->Level = 2;
     // configure game objects
     glm::vec2 playerPos = glm::vec2(this->Width / 2.0f - PLAYER_SIZE.x / 2.0f, this->Height - PLAYER_SIZE.y);
     Player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"));
@@ -132,8 +132,9 @@ void Game::Update(float dt)
     {
         --this->Lives;
         // did the player lose all his lives? : game over
-        if (this->Lives == 0)
+        if (this->Lives <= 0)
         {
+            this->Lives = 3;
             this->ResetLevel();
             this->State = GAME_MENU;
         }
@@ -163,6 +164,7 @@ void Game::ProcessInput(float dt)
         {
             this->Level = (this->Level + 1) % 4;
             this->KeysProcessed[GLFW_KEY_W] = true;
+            std::cout << this->Level;
         }
         if (this->Keys[GLFW_KEY_S] && !this->KeysProcessed[GLFW_KEY_S])
         {
@@ -172,6 +174,7 @@ void Game::ProcessInput(float dt)
                 this->Level = 3;
             //this->Level = (this->Level - 1) % 4;
             this->KeysProcessed[GLFW_KEY_S] = true;
+            std::cout << this->Level;
         }
     }
     if (this->State == GAME_WIN)

@@ -1,13 +1,3 @@
-
-
-/*******************************************************************
-** This code is part of Breakout.
-**
-** Breakout is free software: you can redistribute it and/or modify
-** it under the terms of the CC BY 4.0 license as published by
-** Creative Commons, either version 4 of the License, or (at your
-** option) any later version.
-******************************************************************/
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
@@ -114,7 +104,10 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
         if (action == GLFW_PRESS)
             Breakout.Keys[key] = true;
         else if (action == GLFW_RELEASE)
+        {
             Breakout.Keys[key] = false;
+            Breakout.KeysProcessed[key] = false;
+        }
     }
 }
 
